@@ -1,6 +1,6 @@
 const Building = require("../models/building");
 
-exports.getAllBuildings = (req, res) => {
+exports.getAllBuilding = (req, res) => {
   Building.find()
     .then((building) => {
       console.log({ building });
