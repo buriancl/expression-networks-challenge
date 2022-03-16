@@ -5,6 +5,14 @@ import BuildingItem from "./BuildingItem";
 const ShowBuildingInventory = () => {
   const [buildings, setBuildings] = useState([]);
 
+  const handleDelete = (e) => {
+    axios.delete(`http://localhost:8000/api/building/${e.target.name}`);
+
+    setBuildings((data) => {
+      return data.filter((building) => building._id !== e.target.name);
+    });
+  };
+
   useEffect(() => {
     axios
       .get("http://localhost:8000/api/building")
