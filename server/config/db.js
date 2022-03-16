@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const db = process.env.MONGO_URI;
+const db = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@itemmanager.zzmtz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 
 const connectDB = async () => {
   try {
