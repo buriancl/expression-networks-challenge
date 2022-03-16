@@ -2,32 +2,19 @@
 const express = require("express");
 const router = express.Router();
 
-/**
- * @route GET api/building
- * @description get all building
- * @access public
- */
-router.get("/");
+const {
+  getAllBuildings,
+  postCreateBuilding,
+  putUpdateBuilding,
+  deleteBuilding,
+} = require("../controllers/building");
 
-/**
- * @route POST api/building
- * @description add a new building
- * @access public
- */
-router.post("/");
+router.get("/", getAllBuildings);
 
-/**
- * @route PUT api/building/:id
- * @description update building
- * @access public
- */
-router.put("/:id");
+router.post("/", postCreateBuilding);
 
-/**
- * @route DELETE api/building/:id
- * @description delete building
- * @access public
- */
-router.delete("/:id");
+router.put("/:id", putUpdateBuilding);
+
+router.delete("/:id", deleteBuilding);
 
 module.exports = router;
