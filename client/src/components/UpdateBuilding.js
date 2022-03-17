@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const UpdateBuilding = ({ _id }) => {
+const UpdateBuilding = ({ _id, handleUpdate }) => {
   const [data, setData] = useState({
     address: "",
     maxOccupancy: "",
@@ -39,6 +39,7 @@ const UpdateBuilding = ({ _id }) => {
       className="form-container"
       onSubmit={(e) => {
         handleSubmit(e);
+        handleUpdate();
       }}
     >
       <label htmlFor="address" className="label">

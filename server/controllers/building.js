@@ -38,13 +38,13 @@ exports.putUpdateBuilding = (req, res) => {
 };
 
 exports.deleteBuilding = (req, res) => {
-  Building.findByIdAndRemove(req.params.id, req.body).then((data) =>
-    res
-      .json({ message: "Building succesfully deleted", data })
-      .catch((err) =>
-        res
-          .status(404)
-          .json({ error: "Building not found", message: err.message })
-      )
-  );
+  Building.findByIdAndRemove(req.params.id, req.body)
+    .then((data) =>
+      res.json({ message: "building deleted successfully", data })
+    )
+    .catch((err) =>
+      res
+        .status(404)
+        .json({ error: "Building not found", message: err.message })
+    );
 };
