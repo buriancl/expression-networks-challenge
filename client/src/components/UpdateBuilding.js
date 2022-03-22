@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
+import { buildingContext } from "../assets/Context";
 
-const UpdateBuilding = ({ _id, handleUpdate }) => {
+const UpdateBuilding = ({ _id, originData }) => {
   const [data, setData] = useState({
     address: "",
     maxOccupancy: "",
@@ -9,6 +10,12 @@ const UpdateBuilding = ({ _id, handleUpdate }) => {
     contractLength: "",
     zoneType: "",
   });
+
+  useEffect(() => {
+    setData(originData);
+  }, []);
+
+  const { handleUpdate } = useContext(buildingContext);
 
   const handleChange = (e) => {
     setData((data) => ({ ...data, [e.target.name]: e.target.value }));
@@ -20,18 +27,20 @@ const UpdateBuilding = ({ _id, handleUpdate }) => {
     axios
       .put(`http://localhost:8000/api/building/${_id}`, data)
       .then((res) => {
-        setData({
-          address: "",
-          maxOccupancy: "",
-          description: "",
-          contractLength: "",
-          zoneType: "",
-        });
+        // setData({
+        //   address: "",
+        //   maxOccupancy: "",
+        //   description: "",
+        //   contractLength: "",
+        //   zoneType: "",
+        // });
         console.log(res.data.message);
       })
       .catch((err) => {
         console.log("Failed to update building", err.message);
       });
+
+    handleUpdate();
   };
 
   return (
@@ -39,7 +48,6 @@ const UpdateBuilding = ({ _id, handleUpdate }) => {
       className="form-container"
       onSubmit={(e) => {
         handleSubmit(e);
-        handleUpdate();
       }}
     >
       <label htmlFor="address" className="label">
@@ -95,7 +103,7 @@ const UpdateBuilding = ({ _id, handleUpdate }) => {
         className="input"
       />
       <button type="submit" className="button">
-        Create Building
+        Update Building
       </button>
     </form>
   );

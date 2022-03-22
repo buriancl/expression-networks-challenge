@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import UpdateBuilding from "./UpdateBuilding";
+import { buildingContext } from "../assets/Context";
 
-const BuildingItem = ({ data, handleDelete }) => {
+const BuildingItem = ({ data }) => {
   const [open, setOpen] = useState(false);
   const [id, setId] = useState("");
-  const [update, setUpdate] = useState(false);
 
   const {
     _id,
@@ -16,11 +16,6 @@ const BuildingItem = ({ data, handleDelete }) => {
     updatedAt,
   } = data;
 
-  const handleUpdate = () => {
-    console.log("update", update, !update);
-    setUpdate(!update);
-  };
-
   const handleEdit = (e) => {
     setId(e.target.name);
     setOpen(true);
@@ -30,6 +25,8 @@ const BuildingItem = ({ data, handleDelete }) => {
     setId("");
     setOpen(false);
   };
+
+  const { handleDelete } = useContext(buildingContext);
 
   return (
     <li key={_id}>
@@ -62,7 +59,7 @@ const BuildingItem = ({ data, handleDelete }) => {
               _id={_id}
               handleEdit={handleEdit}
               handleClose={handleClose}
-              handleUpdate={handleUpdate}
+              originData={data}
             />
           </div>
         </section>

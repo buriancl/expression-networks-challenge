@@ -1,36 +1,13 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React from "react";
 import BuildingItem from "./BuildingItem";
 
-const ShowBuildingInventory = () => {
-  const [buildings, setBuildings] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:8000/api/building")
-      .then((res) => {
-        console.log(res.data);
-        setBuildings(res.data);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
-  }, []);
-
-  const handleDelete = (e) => {
-    axios.delete(`http://localhost:8000/api/building/${e.target.name}`);
-
-    setBuildings((data) => {
-      return data.filter((building) => building._id !== e.target.name);
-    });
-  };
-
+const ShowBuildingInventory = ({ buildings }) => {
   return (
     <section className="container">
       <h1>Building Inventory</h1>
       <ul>
         {buildings.map((data) => (
-          <BuildingItem data={data} handleDelete={handleDelete} />
+          <BuildingItem data={data} />
         ))}
       </ul>
     </section>

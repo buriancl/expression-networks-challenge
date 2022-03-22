@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
+import { buildingContext } from "../assets/Context";
+import { FormControl, FormLabel, TextField, Button } from "@mui/material";
 
 const CreateBuilding = () => {
   const [data, setData] = useState({
@@ -9,6 +11,8 @@ const CreateBuilding = () => {
     contractLength: "",
     zoneType: "",
   });
+
+  const { handleUpdate } = useContext(buildingContext);
 
   const handleChange = (e) => {
     setData((data) => ({ ...data, [e.target.name]: e.target.value }));
@@ -32,68 +36,72 @@ const CreateBuilding = () => {
       .catch((err) => {
         console.log("Error couldn't create Building", err.message);
       });
+
+    handleUpdate();
   };
   return (
     <section className="container">
-      <section className="contents">
-        <form onSubmit={handleSubmit} className="form-container" noValidate>
-          <label htmlFor="address" className="label">
-            Address
-          </label>
-          <input
-            type="text"
-            name="address"
-            value={data.address}
-            onChange={handleChange}
-            className="input"
-          />
-          <label htmlFor="maxOccupancy" className="label">
-            Max Occupancy
-          </label>
-          <input
-            type="number"
-            name="maxOccupancy"
-            min="1"
-            value={data.maxOccupancy}
-            onChange={handleChange}
-            className="input"
-          />
-          <label htmlFor="description" className="label">
-            Description/Notes
-          </label>
-          <input
-            type="text"
-            name="description"
-            value={data.description}
-            onChange={handleChange}
-            className="input"
-          />
-          <label htmlFor="contractLength" className="label">
-            Contract Length
-          </label>
-          <input
-            type="number"
-            name="contractLength"
-            min="0"
-            value={data.contractLength}
-            onChange={handleChange}
-            className="input"
-          />
-          <label htmlFor="zoneType" className="label">
-            zoneType
-          </label>
-          <input
-            type="text"
-            name="zoneType"
-            value={data.zoneType}
-            onChange={handleChange}
-            className="input"
-          />
-          <button type="submit" className="button">
-            Create Building
-          </button>
-        </form>
-      </section>
+      <FormControl
+        onSubmit={handleSubmit}
+        className="form-container"
+        noValidate
+      >
+        <FormLabel htmlFor="address" className="FormLabel">
+          Address
+        </FormLabel>
+        <TextField
+          type="text"
+          name="address"
+          value={data.address}
+          onChange={handleChange}
+          className="TextField"
+        />
+        <FormLabel htmlFor="maxOccupancy" className="FormLabel">
+          Max Occupancy
+        </FormLabel>
+        <TextField
+          type="number"
+          name="maxOccupancy"
+          min="1"
+          value={data.maxOccupancy}
+          onChange={handleChange}
+          className="TextField"
+        />
+        <FormLabel htmlFor="description" className="FormLabel">
+          Description/Notes
+        </FormLabel>
+        <TextField
+          type="text"
+          name="description"
+          value={data.description}
+          onChange={handleChange}
+          className="TextField"
+        />
+        <FormLabel htmlFor="contractLength" className="FormLabel">
+          Contract Length
+        </FormLabel>
+        <TextField
+          type="number"
+          name="contractLength"
+          min="0"
+          value={data.contractLength}
+          onChange={handleChange}
+          className="TextField"
+        />
+        <FormLabel htmlFor="zoneType" className="FormLabel">
+          zoneType
+        </FormLabel>
+        <TextField
+          type="text"
+          name="zoneType"
+          value={data.zoneType}
+          onChange={handleChange}
+          className="TextField"
+        />
+        <Button type="submit" className="button">
+          Create Building
+        </Button>
+      </FormControl>
     </section>
   );
 };
