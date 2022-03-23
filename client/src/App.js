@@ -40,7 +40,6 @@ function App() {
       <buildingContext.Provider value={{ handleUpdate, handleDelete }}>
         <CreateBuilding />
         <ShowBuildingInventory buildings={buildings} />
-        <button onClick={handleUpdate}>handleUpdate</button>
       </buildingContext.Provider>
     </main>
   );

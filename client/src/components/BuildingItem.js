@@ -27,7 +27,6 @@ const BuildingItem = ({ data }) => {
   };
 
   const localDate = new Date(updatedAt);
-  console.log(localDate.toString());
 
   const { handleDelete } = useContext(buildingContext);
 

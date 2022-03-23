@@ -1,10 +1,16 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
 import { buildingContext } from "../assets/Context";
-import { Editor, EditorState } from "draft-js";
-import "draft-js/dist/Draft.css";
+import "./CreateBuilding.css";
+// import { EditorState } from "draft-js";
+// import { Editor } from "react-draft-wysiwyg";
+// import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 const CreateBuilding = () => {
+  // const [editorState, setEditorState] = useState(() =>
+  //   EditorState.createEmpty()
+  // );
+
   const [data, setData] = useState({
     address: "",
     maxOccupancy: "",
@@ -12,9 +18,6 @@ const CreateBuilding = () => {
     contractLength: "",
     zoneType: "",
   });
-  const [editorState, setEditorState] = React.useState(() =>
-    EditorState.createEmpty()
-  );
 
   const { handleUpdate } = useContext(buildingContext);
 
@@ -43,7 +46,7 @@ const CreateBuilding = () => {
       });
   };
   return (
-    <section className="container">
+    <section className="create-container">
       <form onSubmit={handleSubmit} className="form-container" noValidate>
         <label htmlFor="address" className="FormLabel">
           Address
@@ -73,6 +76,12 @@ const CreateBuilding = () => {
           value={data.description}
           onChange={handleChange}
         />
+        {/* <Editor
+          editorState={editorState}
+          onChange={setEditorState}
+          name="description"
+          value={data.description}
+        /> */}
         <label htmlFor="contractLength" className="FormLabel">
           Contract Length
         </label>
