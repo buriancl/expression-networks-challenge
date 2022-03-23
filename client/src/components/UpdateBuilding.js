@@ -27,20 +27,12 @@ const UpdateBuilding = ({ _id, originData }) => {
     axios
       .put(`http://localhost:8000/api/building/${_id}`, data)
       .then((res) => {
-        // setData({
-        //   address: "",
-        //   maxOccupancy: "",
-        //   description: "",
-        //   contractLength: "",
-        //   zoneType: "",
-        // });
+        handleUpdate();
         console.log(res.data.message);
       })
       .catch((err) => {
         console.log("Failed to update building", err.message);
       });
-
-    handleUpdate();
   };
 
   return (

@@ -26,6 +26,9 @@ const BuildingItem = ({ data }) => {
     setOpen(false);
   };
 
+  const localDate = new Date(updatedAt);
+  console.log(localDate.toString());
+
   const { handleDelete } = useContext(buildingContext);
 
   return (
@@ -41,7 +44,7 @@ const BuildingItem = ({ data }) => {
           <p>Maximum Occupancy: {maxOccupancy}</p>
           <p>Zone Type: {zoneType}</p>
         </div>
-        <p>Last update: {updatedAt}</p>
+        <p>Last update: {localDate.toString()}</p>
       </div>
       <button name={_id} onClick={handleEdit}>
         Edit
