@@ -2,6 +2,17 @@ import React, { useState, useContext } from "react";
 import axios from "axios";
 import { buildingContext } from "../assets/Context";
 import "./CreateBuilding.css";
+import Box from "@mui/material/Box";
+import Paper from "@mui/material/Paper";
+import TextField from "@mui/material/TextField";
+import {
+  Button,
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  MenuItem,
+  Select,
+} from "@mui/material";
 // import { EditorState } from "draft-js";
 // import { Editor } from "react-draft-wysiwyg";
 // import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
@@ -46,80 +57,87 @@ const CreateBuilding = () => {
       });
   };
   return (
-    <section className="create-container">
-      <form onSubmit={handleSubmit} className="form-container" noValidate>
-        <label htmlFor="address" className="FormLabel">
-          Address
-        </label>
-        <input
-          type="text"
-          name="address"
-          value={data.address}
-          onChange={handleChange}
-        />
-        <label htmlFor="maxOccupancy" className="FormLabel">
-          Max Occupancy
-        </label>
-        <input
-          type="number"
-          name="maxOccupancy"
-          min="1"
-          value={data.maxOccupancy}
-          onChange={handleChange}
-        />
-        <label htmlFor="description" className="FormLabel">
-          Description/Notes
-        </label>
-        <input
-          type="text"
-          name="description"
-          value={data.description}
-          onChange={handleChange}
-        />
-        {/* <Editor
+    <Box className="createBuilding__container">
+      <Paper elevation={3}>
+        <FormControl
+          onSubmit={handleSubmit}
+          className="form-container"
+          noValidate
+        >
+          <FormLabel htmlFor="address" className="FormFormLabel">
+            Address
+          </FormLabel>
+          <TextField
+            type="text"
+            name="address"
+            value={data.address}
+            onChange={handleChange}
+          />
+          <FormLabel htmlFor="maxOccupancy" className="FormFormLabel">
+            Max Occupancy
+          </FormLabel>
+
+          <TextField
+            type="number"
+            name="maxOccupancy"
+            min="1"
+            value={data.maxOccupancy}
+            onChange={handleChange}
+          />
+          <FormLabel htmlFor="description" className="FormFormLabel">
+            Description/Notes
+          </FormLabel>
+          <TextField
+            type="text"
+            name="description"
+            value={data.description}
+            onChange={handleChange}
+          />
+          {/* <Editor
           editorState={editorState}
           onChange={setEditorState}
           name="description"
           value={data.description}
         /> */}
-        <label htmlFor="contractLength" className="FormLabel">
-          Contract Length
-        </label>
-        <input
-          type="number"
-          name="contractLength"
-          min="0"
-          value={data.contractLength}
-          onChange={handleChange}
-        />
-        <label htmlFor="zoneType" className="FormLabel">
-          Zone Type
-        </label>
-        <select
-          name="zoneType"
-          id="zoneTypeSelect"
-          value={data.zoneType}
-          onChange={handleChange}
-        >
-          <option value="">Please choose an option</option>
-          <option value="commercial">Commercial</option>
-          <option value="industrial">Industrial</option>
-          <option value="government">Government</option>
-          <option value="residential">Residential</option>
-          <option value="agriculture">Agriculture</option>
-          <option value="other">Other</option>
-        </select>
-        {/* <input
+          <FormLabel htmlFor="contractLength" className="FormFormLabel">
+            Contract Length
+          </FormLabel>
+          <TextField
+            type="number"
+            name="contractLength"
+            min="0"
+            value={data.contractLength}
+            onChange={handleChange}
+          />
+          <FormLabel htmlFor="zoneType" className="FormFormLabel">
+            Zone Type
+          </FormLabel>
+          <Select
+            name="zoneType"
+            id="zoneTypeSelect"
+            value={data.zoneType}
+            onChange={handleChange}
+          >
+            <MenuItem value="">Please choose an option</MenuItem>
+            <MenuItem value="commercial">Commercial</MenuItem>
+            <MenuItem value="industrial">Industrial</MenuItem>
+            <MenuItem value="government">Government</MenuItem>
+            <MenuItem value="residential">Residential</MenuItem>
+            <MenuItem value="agriculture">Agriculture</MenuItem>
+            <MenuItem value="other">Other</MenuItem>
+          </Select>
+          {/* <TextField
           type="text"
           name="zoneType"
           value={data.zoneType}
           onChange={handleChange}
         /> */}
-        <button type="submit" className="button">
-          Create Building
-        </button>
-      </form>
-    </section>
+          <Button type="submit" className="button" variant="outlined">
+            Create Building
+          </Button>
+        </FormControl>
+      </Paper>
+    </Box>
   );
 };
 
