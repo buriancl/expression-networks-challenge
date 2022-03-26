@@ -93,14 +93,28 @@ const CreateBuilding = () => {
           onChange={handleChange}
         />
         <label htmlFor="zoneType" className="FormLabel">
-          zoneType
+          Zone Type
         </label>
-        <input
+        <select
+          name="zoneType"
+          id="zoneTypeSelect"
+          value={data.zoneType}
+          onChange={handleChange}
+        >
+          <option value="">Please choose an option</option>
+          <option value="commercial">Commercial</option>
+          <option value="industrial">Industrial</option>
+          <option value="government">Government</option>
+          <option value="residential">Residential</option>
+          <option value="agriculture">Agriculture</option>
+          <option value="other">Other</option>
+        </select>
+        {/* <input
           type="text"
           name="zoneType"
           value={data.zoneType}
           onChange={handleChange}
-        />
+        /> */}
         <button type="submit" className="button">
           Create Building
         </button>
