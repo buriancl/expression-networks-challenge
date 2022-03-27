@@ -36,7 +36,7 @@ function App() {
   };
 
   return (
-    <main className="app-container">
+    <main className="app__container">
       <buildingContext.Provider value={{ handleUpdate, handleDelete }}>
         <CreateBuilding />
         <ShowBuildingInventory buildings={buildings} />

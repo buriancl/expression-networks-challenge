@@ -1,12 +1,28 @@
 .createBuilding__container {
-  margin: 10px auto;
+  background-color: #d9d9d9;
+  margin: 1.5em 4em 0 1em;
 }
 
-.form-container {
-  padding: 20px;
-  background: #f4f7f8;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.createBuilding__paper {
+  background: #d9d9d9;
+  padding: 2em;
+}
+
+.createBuilding__form {
+  background-color: #d9d9d9;
+  padding: 50px;
+}
+
+.createBuilding__formLabel {
+  margin: 0.5em;
+}
+
+.createBuilding__textField {
+}
+
+.createBuilding__select {
+  margin-bottom: 0.5em;
+}
+
+.createBuilding__btn {
 }
